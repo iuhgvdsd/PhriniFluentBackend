@@ -21,4 +21,9 @@ urlpatterns = [
     path(
         "words/<int:word_id>/similarity/", views.word_similarity, name="word-similarity"
     ),
+    path(
+        "word-groups/<int:group_id>/words/",
+        views.all_words_from_group,
+        name="all_words_from_group",
+    ),
 ]
