@@ -39,7 +39,7 @@ class WordSerializer(serializers.ModelSerializer):
         model = Word
         fields = ["id", "text", "descriptions"]
 
-class WordGroupWordsSerializer(serializers.ModelSerialixer):
+class WordGroupWordsSerializer(serializers.ModelSerializer):
     words = WordSerializer(many=True, read_only=True)
 
     class Meta:
