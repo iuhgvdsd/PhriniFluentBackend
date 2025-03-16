@@ -38,3 +38,10 @@ class WordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Word
         fields = ["id", "text", "descriptions"]
+
+class WordGroupWordsSerializer(serializers.ModelSerialixer):
+    words = WordSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = WordGroup
+        fields = ["name", "words"]
