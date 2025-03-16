@@ -26,9 +26,4 @@ urlpatterns = [
         views.all_words_from_group,
         name="all_words_from_group",
     ),
-    path(
-        "word-groups/<int:group_id>/random2/",
-        views.random_word_from_group,
-        name="random_word_from_group",
-    ),
 ]
