@@ -67,3 +67,13 @@ def word_similarity(request, word_id):
         100 if answer_text.lower().strip() == input_text.lower().strip() else 0
     )
     return Response({"similarity": similarity_score})
+
+
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def all_words_from_group(request, group_id):
+    word_group = get_object_or_404(WordGroup, id=group_id)
+    if word_group.is_global or (word_group.owner and word_group.owner == request.user):
+        serializer = WordGroupWordsSerializer(word_group)
+        return Response(serializer.data)
+    return Response({"error": "You do not have permission to view this group"}, status=403)
